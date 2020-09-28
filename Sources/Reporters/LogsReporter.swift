@@ -21,7 +21,7 @@ struct LogsReporter: DiagnosticsReporting {
         var sessions = logs.addingHTMLEncoding().components(separatedBy: "\n\n---\n\n")
         sessions = sessions.reversed()
         if let maximumNumberOfSession = DiagnosticsLogger.standard.configuration.maximumNumberOfSession {
-            sessions = Array(sessions[0...maximumNumberOfSession])
+            sessions = Array(sessions.prefix(maximumNumberOfSession))
         }
         return sessions.joined(separator: "\n\n---\n\n")
     }
